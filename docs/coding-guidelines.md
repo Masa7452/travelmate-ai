@@ -17,6 +17,10 @@
   - Unit tests: 60–80% coverage (focus on logic, UseCases, Domain)
   - API/Integration: 15–30%
   - E2E: 5–10%, only critical flows
+- **Frontend testing philosophy**:
+  - Unit tests handle all detailed requirements and edge cases
+  - E2E tests verify only high-level user journeys (e.g., login → browse → purchase)
+  - Never rely on E2E for form validation, error states, or component-specific behaviors
 - Tests follow **AAA pattern** (Arrange, Act, Assert)
 - Each test: one clear assertion where possible
 

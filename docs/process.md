@@ -55,9 +55,11 @@
 
 ## Testing Guidelines
 
-* **Unit tests**: 60–80% of coverage (Service/UseCase/Domain logic)
+* **Unit tests**: 60–80% of coverage (Service/UseCase/Domain logic, component behaviors, validation)
 * **API/Integration tests**: 15–30% (I/O contracts, error mapping)
 * **E2E tests**: 5–10%, only critical flows (Home → PlanDetail)
+  * E2E does NOT test: validation rules, error messages, loading states, edge cases
+  * E2E only verifies: main user journey completion, basic navigation, critical business flows
 * Follow **AAA pattern** (Arrange → Act → Assert)
 * Each test should have one clear assertion where possible
 * Do not rely on implementation details
