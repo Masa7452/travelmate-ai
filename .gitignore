@@ -39,3 +39,40 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Editor and IDE
+.history/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test reports
+playwright-report/
+test-results/
+vitest-coverage/
+
+# Temporary and generated files
+*.log
+tmp/
+temp/
+dist/
+
+# Lock files (pnpm-lock.yaml should be tracked)
+# pnpm-lock.yaml is intentionally NOT ignored
+
+# Documentation build outputs
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+
+# OS files
+Thumbs.db
+.Spotlight-V100
+.Trashes
+
+# Project specific
+createxyz-project/
+CRITICAL_ISSUES.md
+src-structure.md
+IMPLEMENTATION_PLAN.md

@@ -1,0 +1,124 @@
+# CodeRabbit Configuration
+# This file configures CodeRabbit to review code according to CLAUDE.md project guidelines
+
+reviews:
+  # Request changes for issues found
+  request_changes_workflow: true
+  # Provide high-level summary
+  high_level_summary: true
+  # Review in Japanese
+  review_language: "ja-JP"
+  # Enable auto-review on PRs
+  auto_review:
+    enabled: true
+    drafts: false
+
+# Path-specific instructions aligned with CLAUDE.md
+path_instructions:
+  - path: "**/*.{ts,tsx}"
+    instructions: |
+      This project strictly follows CLAUDE.md guidelines. Please verify:
+      
+      ## Required Checks
+      
+      ### Type Safety
+      - No `any`/`unknown` usage (except in test files)
+      - Avoid type assertions, prefer type guards for safe type narrowing
+      - Use strict type definitions
+      - Prefer `type` over `interface` (use `interface` only for external library integration)
+      
+      ### Coding Style
+      - Use arrow functions by default
+      - Prohibit `for`/`forEach`, prefer declarative approaches like `map`/`filter`/`reduce`
+      - Use early returns to reduce nesting
+      - Consider file splitting at 300+ lines, mandatory at 500+ lines
+      
+      ### Immutable Design
+      - Properties should be `readonly`
+      - Instance creation via `create` factory methods
+      - State changes return new instances
+      - No need for `public` modifier
+      
+      ### Naming Conventions
+      - Constants: `UPPER_SNAKE_CASE` or `PascalCase`
+      - Clear, self-explanatory naming that needs no comments
+      
+      ### React Specific
+      - Use `useMemo`/`useCallback` for cross-component values/functions
+
+  - path: "src/app/api/**/*.{ts,tsx}"
+    instructions: |
+      ## API Route Standards
+      - Proper error handling implementation
+      - Use appropriate HTTP status codes
+      - Input validation (prefer Zod)
+      - Type-safe responses
+
+# Language-specific settings
+language_specific:
+  typescript:
+    enabled: true
+    
+# Enable AI-powered review comment suggestions
+enable_review_comment_suggestions: true
+
+# Use early access features
+early_access: true
+
+# Review triggers
+review_triggers:
+  # Review on PR open/update
+  on_pull_request: true
+  # Review on push to main
+  on_push_to_default_branch: false
+
+# File patterns to review
+file_patterns:
+  include:
+    - "**/*.ts"
+    - "**/*.tsx"
+    - "**/*.js"
+    - "**/*.jsx"
+    - "**/*.json"
+    - "**/*.yml"
+    - "**/*.yaml"
+    - "**/*.md"
+  exclude:
+    - "**/node_modules/**"
+    - "**/dist/**"
+    - "**/.next/**"
+    - "**/coverage/**"
+    - "**/playwright-report/**"
+    - "**/*.min.js"
+    - "**/*.min.css"
+    - "pnpm-lock.yaml"
+
+# Additional checks
+checks:
+  # Security checks
+  security:
+    enabled: true
+    check_secrets: true
+    check_dependencies: true
+  
+  # Performance checks
+  performance:
+    enabled: true
+    bundle_size: true
+    
+  # Best practices
+  best_practices:
+    enabled: true
+    
+  # Documentation
+  documentation:
+    enabled: true
+    check_comments: true
+    check_jsdoc: false  # We prefer self-documenting code
+
+# Custom review prompts
+custom_review_prompts:
+  - "Prioritize compliance with CLAUDE.md guidelines"
+  - "Verify TDD principles (Red→Green→Refactor)"
+  - "Check type safety and immutable design"
+  - "Ensure test coverage above 80% (excluding I/O layer)"
